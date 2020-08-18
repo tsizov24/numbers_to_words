@@ -6,12 +6,12 @@ import (
 )
 
 var (
-	units = []string{"один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"}
-	units2 = []string{"одна", "две"}
-	dozens = []string{"десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"}
-	dozens2 = []string{"одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"}
-	hundreds = []string{"сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"}
-	nums = []string{"тысяч", "миллион", "миллиард", "триллион", "квадриллион", "квинтиллион", "секстиллион", "септиллион", "октиллион", "нониллион", "дециллион"}
+	ruUnits    = []string{"один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"}
+	ruUnits2   = []string{"одна", "две"}
+	ruDozens   = []string{"десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"}
+	ruDozens2  = []string{"одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"}
+	ruHundreds = []string{"сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"}
+	ruNums     = []string{"тысяч", "миллион", "миллиард", "триллион", "квадриллион", "квинтиллион", "секстиллион", "септиллион", "октиллион", "нониллион", "дециллион"}
 )
 
 func Ru(num string) (string, error) {
@@ -21,7 +21,7 @@ func Ru(num string) (string, error) {
 	if err := isValidNumber(num); err != nil {
 		return "", err
 	}
-	if len(num) > len(nums) * 3 + 3 {
+	if len(num) > len(ruNums) * 3 + 3 {
 		return "", tooBigNumber
 	}
 	res := stringBuilder{}
@@ -35,24 +35,24 @@ func Ru(num string) (string, error) {
 		n3 := n % 100 % 10
 		pos -= 3
 		if n1 > 0 {
-			sb.writeStringWithSpaces(hundreds[n1 - 1])
+			sb.writeStringWithSpaces(ruHundreds[n1 - 1])
 		}
 		if n2 == 1 && n3 > 0 {
-			sb.writeStringWithSpaces(dozens2[n3 - 1])
+			sb.writeStringWithSpaces(ruDozens2[n3 - 1])
 		} else {
 			if n2 > 0 {
-				sb.writeStringWithSpaces(dozens[n2 - 1])
+				sb.writeStringWithSpaces(ruDozens[n2 - 1])
 			}
 			if n3 > 0 {
 				if cnt == 1 && (n3 == 1 || n3 == 2) {
-					sb.writeStringWithSpaces(units2[n3 - 1])
+					sb.writeStringWithSpaces(ruUnits2[n3 - 1])
 				} else {
-					sb.writeStringWithSpaces(units[n3 - 1])
+					sb.writeStringWithSpaces(ruUnits[n3 - 1])
 				}
 			}
 		}
 		if cnt > 0 && n > 0 {
-			sb.WriteString(nums[cnt - 1])
+			sb.WriteString(ruNums[cnt - 1])
 			if cnt == 1 {
 				if n2 != 1 {
 					if n3 == 1 {
