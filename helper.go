@@ -17,7 +17,7 @@ var (
 )
 
 // Checks validity of number. Returns nil if number is prime.
-func isValidNumber(num string) error { //!!!!!!!!!!!!!
+func isValidNumber(num string) error {
 	valid := regexp.MustCompile(`^[1-9][0-9]*$`)
 	if valid.MatchString(num) {
 		return nil
