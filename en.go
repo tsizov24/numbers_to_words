@@ -1,6 +1,7 @@
 package numbers_to_words
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -12,7 +13,8 @@ var (
 	enNums    = []string{"thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion"}
 )
 
-func En(num string) (string, error) {
+func En(number interface{}) (string, error) {
+	num := fmt.Sprintf("%v", number)
 	if num == "0" {
 		return "zero", nil
 	}

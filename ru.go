@@ -1,6 +1,7 @@
 package numbers_to_words
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -14,7 +15,8 @@ var (
 	ruNums     = []string{"тысяч", "миллион", "миллиард", "триллион", "квадриллион", "квинтиллион", "секстиллион", "септиллион", "октиллион", "нониллион", "дециллион"}
 )
 
-func Ru(num string) (string, error) {
+func Ru(number interface{}) (string, error) {
+	num := fmt.Sprintf("%v", number)
 	if num == "0" {
 		return "ноль", nil
 	}

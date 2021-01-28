@@ -1,6 +1,7 @@
 package numbers_to_words
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -11,7 +12,8 @@ var (
 	tkNums   = []string{"müň", "million", "milliard", "trillion", "kwadrillion", "kwintillion", "sekstillion", "septillion", "oktillion", "nonillion", "desillion"}
 )
 
-func Tk(num string) (string, error) {
+func Tk(number interface{}) (string, error) {
+	num := fmt.Sprintf("%v", number)
 	if num == "0" {
 		return "nol", nil
 	}

@@ -2,6 +2,7 @@ package numbers_to_words
 
 import (
 	"errors"
+	"fmt"
 	"math"
 	"regexp"
 	"strings"
@@ -40,4 +41,8 @@ func (sb *stringBuilder) addAllAndReset(sb2 * stringBuilder) {
 	sb.Reset()
 	sb.WriteString(sb2.String())
 	sb2.Reset()
+}
+
+func getString(n interface{}) string {
+	return fmt.Sprintf("%s", n)
 }
