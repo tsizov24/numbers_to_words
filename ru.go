@@ -54,24 +54,24 @@ func Ru(number interface{}) (string, error) {
 			}
 		}
 		if cnt > 0 && n > 0 {
-			sb.WriteString(ruNums[cnt - 1])
+			_, _ = sb.WriteString(ruNums[cnt - 1])
 			if cnt == 1 {
 				if n2 != 1 {
 					if n3 == 1 {
-						sb.WriteString("а")
+						_, _ = sb.WriteString("а")
 					} else if n3 >= 2 && n3 <= 4 {
-						sb.WriteString("и")
+						_, _ = sb.WriteString("и")
 					}
 				}
 			} else {
 				if n2 == 1 || n3 > 4 {
-					sb.WriteString("ов")
+					_, _ = sb.WriteString("ов")
 				} else if n3 >= 2 || n3 <= 4 {
-					sb.WriteString("а")
+					_, _ = sb.WriteString("а")
 				}
 			}
 		}
-		sb.WriteString(" ")
+		_, _ = sb.WriteString(" ")
 		res.addAllAndReset(&sb)
 		cnt++
 	}

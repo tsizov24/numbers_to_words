@@ -43,8 +43,8 @@ func En(number interface{}) (string, error) {
 		} else {
 			if n2 > 0 {
 				if n3 > 0 {
-					sb.WriteString(enDozens[n2 - 1])
-					sb.WriteString("-")
+					_, _ = sb.WriteString(enDozens[n2 - 1])
+					_, _ = sb.WriteString("-")
 				} else {
 					sb.writeStringWithSpaces(enDozens[n2 - 1])
 				}
